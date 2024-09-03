@@ -1,0 +1,151 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model users {
+  id Int @id @default(autoincrement())
+  nick_name String
+  avatar_url String
+  telegram_id String @unique
+  squirrel_coin Decimal?
+  tron_coin Decimal?
+  boost_coin Decimal?
+  level_id Int
+  count Int
+  energy Int @default(1000)
+  last_date String
+  accept_bonus_last_date String
+  url String
+  chatId String
+}
+
+model level {
+  id Int @id @default(autoincrement())
+  title String
+  default_add_energy Int
+  boost_coin Int
+  per_tap Int
+  target_count Int
+  squirrel_url String @default("")
+  useful_energy Int @default(0)
+}
+
+model card {
+  id Int @id @default(autoincrement())
+  card_name String
+  squirrel_coin_amount Int
+  boost_coin_amount Int
+  energy_amount Int
+  add_squirrel Int
+  add_energy Int
+  add_boost Int
+  cost Int
+  add_cost Int
+  role Int
+  require_user_level Int
+  card_avatar String
+}
+
+model improvecard {
+  id Int @id @default(autoincrement())
+  user_id Int
+  card_id Int
+  level Int
+}
+
+model daily_bonus {
+  id Int @id @default(autoincrement())
+  title String
+  daily_bonus_cost Int
+  daily_bonus_type Int
+}
+
+model daily_bonus_history {
+  id Int @id @default(autoincrement())
+  user_id Int
+  daily_bonus_accept_date String
+  daily_step Int
+}
+
+model invite_history {
+  id Int @id @default(autoincrement())
+  user_id Int
+  invited_user_id Int
+  invite_date String
+  invite_bonus String
+}
+
+model task {
+  id Int @id @default(autoincrement())
+  task_type Int
+  task_target_id Int
+  task_complete_bonus Int
+  task_target Int
+}
+
+model task_history {
+  id Int @id @default(autoincrement())
+  task_user_id Int
+  task_id Int
+  task_state Int
+  task_progress Int
+}
+
+model withdraw_card {
+  id Int @id @default(autoincrement())
+  name String
+  type Int
+  svg_type String
+  image_url String @default("")
+  convert_rub String @default("")
+}
+
+model conform_withdraw_info {
+  id Int @id @default(autoincrement())
+  user_id Int
+  withdraw_card_id Int
+  withdraw_card_number String
+  withdraw_card_owner String
+  info_state Int
+}
+
+model withdraw_history {
+  id Int @id @default(autoincrement())
+  user_id Int
+  conform_withdraw_info_id Int
+  withdraw_amount Int
+  withdraw_date String
+  withdraw_state Int
+}
+
+model user_verify {
+  id Int @id @default(autoincrement())
+  user_id Int
+  user_name String
+  user_surname String
+  user_birthday String
+  user_city String
+  user_verify_state Int
+  user_verify_date String
+}
+
+model transaction_history {
+  id Int @id @default(autoincrement())
+  user_id Int
+  card_id Int
+  withdraw_amount String
+  withdraw_date String
+  card_number String
+  withdraw_state Int
+}

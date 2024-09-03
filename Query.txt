@@ -1,0 +1,16 @@
+// Get Card Information
+
+SELECT card.*, MAX(improvecardtable.level) + 1 AS maxLevel, SUM(card.squirrel_coin_amount + card.add_squirrel * (improvecardtable.level)) AS sumsquirrel, SUM(card.energy_amount + card.add_energy * (improvecardtable.level)) AS sumenergy, card.cost + card.add_cost * (MAX(improvecardtable.level)) AS sumcost FROM card LEFT JOIN (SELECT * FROM improvecard WHERE improvecard.user_id = 1 ORDER BY improvecard.id DESC) AS improvecardtable ON card.id = improvecardtable.card_id GROUP BY card.id;
+
+//Get User Information
+SELECT *, SUM(card.squirrel_coin_amount + card.add_squirrel * (improvecard.level - 1)) AS sumsquirrel FROM improvecard INNER JOIN card ON improvecard.card_id = card.id AND improvecard.user_id = 1 GROUP BY card.id;
+
+
+SELECT users.*, level.title, level.boost_coin AS level_up_boost, level.per_tap, level.target_count, level.default_add_energy, newcard.sumsquirrel, newcard.sumenergy FROM users INNER JOIN level ON users.level_id = level.id AND users.id = 2 LEFT JOIN (SELECT improvecard.user_id, SUM(card.squirrel_coin_amount + card.add_squirrel * (improvecard.level - 1)) AS sumsquirrel, SUM(card.energy_amount + card.add_energy * (improvecard.level - 1)) AS sumenergy FROM improvecard INNER JOIN card ON improvecard.card_id = card.id GROUP BY improvecard.user_id) AS newcard ON users.id = newcard.user_id;
+
+https://t.me/capybara_playbot?start=ref7082339810
+
+
+ const sendInvite = () => {
+    window.open("https://t.me/share/url?url=https://t.me/mini_squirrel_coin_bot?start=ref01031&utm_source=share2", "_blank")
+  }

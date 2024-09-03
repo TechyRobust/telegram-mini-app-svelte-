@@ -1,0 +1,229 @@
+@import '@fontsource/fira-mono';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+:root {
+	--max-width: 420px;
+	visibility: visible;
+}
+
+body {
+	min-height: 100%;
+	max-width: var(--max-width);
+	margin: 0 auto;
+	position: relative;
+	background-attachment: fixed;
+	background-color: var(--color-bg-1);
+	background-image: radial-gradient(
+			50% 50% at 50% 50%,
+			rgba(255, 255, 255, 0.75) 0%,
+			rgba(255, 255, 255, 0) 100%
+		),
+		linear-gradient(180deg, var(--color-bg-0) 0%, var(--color-bg-1) 15%, var(--color-bg-2) 50%);
+	touch-action: manipulation;
+	user-select: none;
+}
+
+h1,
+h2,
+p {
+	font-weight: 400;
+}
+
+p {
+	line-height: 1.5;
+}
+
+a {
+	color: var(--color-theme-1);
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+h1 {
+	font-size: 2rem;
+	text-align: center;
+}
+
+h2 {
+	font-size: 1rem;
+}
+
+pre {
+	font-size: 16px;
+	font-family: var(--font-mono);
+	background-color: rgba(255, 255, 255, 0.45);
+	border-radius: 3px;
+	box-shadow: 2px 2px 6px rgb(255 255 255 / 25%);
+	padding: 0.5em;
+	overflow-x: auto;
+	color: var(--color-text);
+}
+
+.text-column {
+	display: flex;
+	max-width: 48rem;
+	flex: 0.6;
+	flex-direction: column;
+	justify-content: center;
+	margin: 0 auto;
+}
+
+input,
+button {
+	font-size: inherit;
+	font-family: inherit;
+}
+
+button:focus:not(:focus-visible) {
+	outline: none;
+}
+
+@media (min-width: 720px) {
+	h1 {
+		font-size: 2.4rem;
+	}
+}
+
+.visually-hidden {
+	border: 0;
+	clip: rect(0 0 0 0);
+	height: auto;
+	margin: 0;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	width: 1px;
+	white-space: nowrap;
+}
+
+.bg-progress {
+	background: linear-gradient(90deg, #3c9ef5 0%, #97dd01 100%);
+	--tw-bg-opacity: 1;
+}
+
+.customer-progress-bg {
+	background: #FFFFFF0D;
+}
+
+.main-container {
+	max-height: calc(100vh - 172px);
+	min-height: calc(100vh - 172px);
+	margin-top: 10px;
+	scrollbar-width: none;
+	overflow: auto;
+}
+
+
+.main-container::-webkit-scrollbar {
+	display: none;
+}
+
+.animation-test {
+	position: fixed;
+	height: 16px;
+	width: auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	animation: flyUp 1.5s forwards;
+	gap: 3px;
+}
+
+@keyframes flyUp {
+	0% {
+		opacity: 1;
+		transform: translateY(0);
+	}
+	100% {
+		opacity: 0;
+		transform: translateY(-160px);
+	}
+}
+
+.increase-amount-text {
+	font-family: Gilroy;
+	font-size: 30px;
+	font-weight: 900;
+	line-height: 20px;
+	text-align: left;
+	color: white;
+}
+
+.animation-class {
+	min-width: 420px;
+	min-height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	box-shadow: 0 1px 3px 0 rgb(0, 0, 0), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+	position: fixed;
+    z-index: 10000000;
+}
+
+.money-animation {
+	position: absolute;
+	height: 16px;
+	width: auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	animation: flyUp 1.5s forwards;
+	gap: 3px;
+}
+
+/* When level up */
+
+@keyframes levelUp {
+	0% {
+		opacity: 1;
+		transform: translateY(0);
+	}
+	100% {
+		opacity: 0;
+		transform: translateY(-300px);
+	}
+}
+
+.image-animation {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	animation: levelUp 1.5s forwards;
+	gap: 3px;
+	border-radius: 50%;
+}
+
+.avatar-animation-box {
+	width: 300px;
+	height: 300px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 50%;
+	overflow: hidden;
+}
+
+ .w-253 {
+    width: 253px;
+    padding: 0 !important;
+}
+
+ .squirrel-avatar-box:active{ animation: distortAnimation 0.5s ease; }
+
+@keyframes distortAnimation {
+	0% {
+		transform: perspective(400px) rotateX(0deg);
+	}
+	50% {
+		transform: perspective(400px) rotateX(10deg);
+	}
+	100% {
+		transform: perspective(400px) rotateX(0deg);
+	}
+}
