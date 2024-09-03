@@ -1,3 +1,4 @@
+//This page is 404 page.
 <script>
 	import { onMount } from 'svelte';
 	import { IsFooter, IsHeader, IsLoading } from "../../store/store";
